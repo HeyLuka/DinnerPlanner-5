@@ -1,5 +1,30 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<!-- We include the title bar as it should be displayed in each page. -->
+<div class="container">
+	<ng-include src="'partials/title.html'" ng-controller='TitleCtrl'></ng-include>
+</div>
 
+<!-- We include the sidebar as it is shared across two screens. -->
+<div class="container">
+	<div class="row">
+		<!-- We include the sidebar as it is shared across two screens. -->
+		<div id="mydinnerBar" class="col-xs-3">
+			<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+		</div>
+
+		<!-- Here we display the detailed dish information -->
+		<div id="dishInfo-panel" class="col-xs-9">
+			<div class="col-xs-12" id="status-panel">
+				<h4 class="label label-primary">{{status}}</h4>
+				<button ng-click="search(167511)">Find</button>
+			</div>
+
+			<div class="col-xs-5" id="dish-description">
+				<h3>{{dish.Title}}</h3>
+			</div>
+
+		</div>
+		
+	</div>
+</div>
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->

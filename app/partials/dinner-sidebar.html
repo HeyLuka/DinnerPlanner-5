@@ -10,3 +10,18 @@ this with Total price of the menu -->
 	<p>People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/></p>
 	<p>Total number of guests:<span>{{getNumberOfGuests()}}</span></p>	
 </div>
+<div id="dinnerDishes-panel">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Dish Name</th>
+				<th>Cost</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- iteratively print dinner in menu here -->
+			<tr np-repeat="dinner in menues"></tr>
+		</tbody>
+	</table>
+</div>
