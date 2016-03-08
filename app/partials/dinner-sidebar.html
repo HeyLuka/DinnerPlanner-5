@@ -21,7 +21,20 @@ this with Total price of the menu -->
 		</thead>
 		<tbody>
 			<!-- iteratively print dinner in menu here -->
-			<tr np-repeat="dinner in menues"></tr>
+			<tr ng-repeat="dish in menuTitlePriceList">
+				<td>{{dish.title}}</td>
+				<td>{{dish.dishPrice * numberOfGuests}}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Pending</td>
+				<td>{{pending * numberOfGuests}}</td>
+				<td></td>
+			</tr>
 		</tbody>
 	</table>
+	<div style="text-align: right">SEK<span>{{totalMenuPrice * numberOfGuests}}</span></div>
+	<div>
+		<button class="btn btn-primary">Confirm Dinner</button>
+	</div>
 </div>
