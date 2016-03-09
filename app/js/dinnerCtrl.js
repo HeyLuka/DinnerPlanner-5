@@ -80,6 +80,15 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
     }
   }
 
+  $scope.fixNumber = function(number){
+    var numberString = number.toString();
+    var decimalIndex=numberString.indexOf('.');
+    if((decimalIndex == '-1') || (numberString.substring(decimalIndex+1,numberString.length).length < 5)){
+      return number;
+    }else{
+      return parseFloat(number.toFixed(2));
+    }
+  }
   //alert(1);
   //alert(2);
 
