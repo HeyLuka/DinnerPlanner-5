@@ -38,7 +38,7 @@ this with Total price of the menu -->
 			</tr>
 		</tbody>
 	</table>
-	<div style="text-align: right">SEK<span>{{(totalMenuPrice + pending) * numberOfGuests}}</span></div>
+	<div style="text-align: right">SEK<span>{{(fixNumber(totalMenuPrice + pending) * numberOfGuests)}}</span></div>
 	<div>
 		<button class="btn btn-primary">Confirm Dinner</button>
 	</div>

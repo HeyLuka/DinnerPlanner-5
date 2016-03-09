@@ -6,10 +6,17 @@
 dinnerPlannerApp.factory('Dinner',function ($cookieStore, $resource) {
   
   var numberOfGuest = 1;
-  var menu = [167511, 164277, 444701];
+  //var menu = [167511, 164277, 444701];
+  var menu = [];
 
   this.getMenu = function(){
-    return menu;
+    if($cookieStore.get("menu")){
+      return $cookieStore.get("menu");
+    }else
+    {
+      return menu;
+    }
+    
   }
 
   this.addDishToMenu = function(id){
@@ -19,12 +26,14 @@ dinnerPlannerApp.factory('Dinner',function ($cookieStore, $resource) {
       }
     }
     menu.push(id);
+    $cookieStore.put("menu", menu);
   }
 
   this.removeDishFromMenu = function(id){
     for(var key in menu){
       if(menu[key] == id){
         menu.splice(key,1);
+        $cookieStore.put("menu", menu);
         break;
       }
     }
