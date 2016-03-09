@@ -63,7 +63,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
     $location.path('/search');
   }
   
-
   $scope.pending = 0;
 
   var fixNumber = function(number){

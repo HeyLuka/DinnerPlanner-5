@@ -8,7 +8,7 @@ this with Total price of the menu -->
 <h4>My Dinner</h4>
 <div id="numberOfGuests-panel">
 	<p>People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/></p>
-	<p>Total number of guests:<span>{{getNumberOfGuests()}}</span></p>	
+	<p>Total number of guests:<span>{{numberOfGuests}}</span></p>	
 </div>
 <div id="dinnerDishes-panel">
 	<table class="table table-striped">
@@ -30,9 +30,10 @@ this with Total price of the menu -->
 					</button>
 				</td>
 			</tr>
-			<tr>
+			<tr ng-controller='DishCtrl'>
 				<td>Pending</td>
-				<td>{{pending * numberOfGuests}}</td>
+				<!-- <td>{{pending * numberOfGuests}}</td> -->
+				<td>{{pending * getNumberOfGuests()}}</td>
 				<td></td>
 			</tr>
 		</tbody>
