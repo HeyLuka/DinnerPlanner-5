@@ -60,11 +60,19 @@
 									<td>SEK</td>
 									<td>{{ingredient.Quantity*getNumberOfGuests()}}</td>
 								</tr>
+								<tr>
+									<td><b>Total</b></td>
+									<td></td>
+									<td>SEK</td>
+									<td>{{dishPrice * getNumberOfGuests()}}</td>
+								</tr>
 							</tbody>
 
 							<tfoot>
 								<tr ng-controller="DinnerCtrl">
-									<td colspan="2"></td>
+									<td colspan="2">
+										<button class="btn btn-primary" ng-click="redirectToURL()">Go Back</button>
+									</td>
 									<td colspan="2">
 										<button class="btn btn-primary" ng-click="addDishToMenu(dishID); redirectToURL()">Confirm Dish</button>
 									</td>

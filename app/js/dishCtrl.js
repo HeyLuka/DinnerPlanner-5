@@ -13,19 +13,19 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   $scope.getNumberOfGuests = function() {
   	return Dinner.getNumberOfGuests();
   }
-
+  $scope.dishPrice = 0;
   $scope.search = function(id){
   	$scope.status = "Searching...";
   	Dinner.Dish.get({id: id}, function(data){
   		$scope.dish = data;
       var ingredients = data.Ingredients;
-        var dishPrice = 0;
+        //var dishPrice = 0;
 
         for(var ing_key in ingredients){
-          dishPrice += ingredients[ing_key].Quantity;
+          $scope.dishPrice += ingredients[ing_key].Quantity;
         }
-        $scope.$parent.pending = fixNumber(dishPrice);
-        $scope.$parent.totalMenuPrice = fixNumber($scope.$parent.totalMenuPrice + $scope.$parent.pending);
+        $scope.$parent.pending = fixNumber($scope.dishPrice);
+        //$scope.$parent.totalMenuPrice = fixNumber($scope.$parent.totalMenuPrice + $scope.$parent.pending);
   		$scope.status = "Showing detailed information of this dish";
   	}, function(data){
   		$scope.status = "There was an error";

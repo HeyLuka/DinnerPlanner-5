@@ -19,6 +19,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
   var menu = Dinner.getMenu();
 
   $scope.addDishToMenu = function(id){
+
     Dinner.addDishToMenu(id);
     $scope.updateMenu();
   }
@@ -28,10 +29,12 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
     $scope.updateMenu();
   }
 
+  $scope.pending = 0;
   $scope.totalMenuPrice = 0;
   $scope.menuTitlePriceList = [];
 
   $scope.updateMenu = function(){
+    menu = Dinner.getMenu();
     $scope.menuTitlePriceList = [];
     $scope.totalMenuPrice = 0;
     for(var key in menu){
@@ -44,17 +47,18 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
             for(var ing_key in ingredients){
               dishPrice += ingredients[ing_key].Quantity;
             }
-            $scope.test = 1;
+            //$scope.test = 1;
 
             // $scope.menuTitlePriceList[key] = ({"title":title, "dishPrice":fixNumber(dishPrice)})
             $scope.menuTitlePriceList.push({"id":menu[key], "title":title, "dishPrice":fixNumber(dishPrice)});
             // console.log($scope.menuTitlePriceList);
             //alert($scope.menuTitlePriceList[key]);
             $scope.totalMenuPrice = fixNumber($scope.totalMenuPrice + dishPrice);
+            var test = 0;
           })
         })(key);
       }
-      var test = 0;
+    $scope.totalMenuPrice = $scope.totalMenuPrice + $scope.pending;
     }
 
   $scope.updateMenu();
@@ -63,7 +67,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
     $location.path('/search');
   }
   
-  $scope.pending = 0;
+
 
   var fixNumber = function(number){
     var numberString = number.toString();

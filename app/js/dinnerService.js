@@ -6,7 +6,7 @@
 dinnerPlannerApp.factory('Dinner',function ($cookieStore, $resource) {
   
   var numberOfGuest = 2;
-  var menu = [167511, 164277, 320725];
+  var menu = [167511, 164277, "320725"];
 
   this.getMenu = function(){
     return menu;
