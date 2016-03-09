@@ -38,7 +38,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
         for(var ing_key in ingredients){
           dishPrice += ingredients[ing_key].Quantity;
         }
-        $scope.test = 1;
 
         $scope.menuTitlePriceList[key] = ({"title":title, "dishPrice":fixNumber(dishPrice)})
         //alert($scope.menuTitlePriceList[key]);
