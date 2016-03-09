@@ -8,6 +8,8 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
   //$scope.pending = 2;
 
+  $scope.dishID = $routeParams.dishId;
+
   $scope.getNumberOfGuests = function() {
   	return Dinner.getNumberOfGuests();
   }

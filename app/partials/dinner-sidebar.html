@@ -24,7 +24,11 @@ this with Total price of the menu -->
 			<tr ng-repeat="dish in menuTitlePriceList">
 				<td>{{dish.title}}</td>
 				<td>{{dish.dishPrice * numberOfGuests}}</td>
-				<td></td>
+				<td>
+					<button id="{{dish.id}}" class="btn btn-default btn-sm" ng-click="removeDishFromMenu(dish.id)">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</td>
 			</tr>
 			<tr ng-controller='DishCtrl'>
 				<td>Pending</td>
@@ -35,6 +39,9 @@ this with Total price of the menu -->
 		</tbody>
 	</table>
 	<div style="text-align: right">SEK<span>{{totalMenuPrice * numberOfGuests}}</span></div>
+	<div>
+		<button class="btn btn-primary" ng-click="addDishToMenu(171505)">Add one</button>
+	</div>
 	<div>
 		<button class="btn btn-primary">Confirm Dinner</button>
 	</div>
