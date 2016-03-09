@@ -5,8 +5,8 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($cookieStore, $resource) {
   
-  var numberOfGuest = 2;
-  var menu = [167511, 164277, "320725"];
+  var numberOfGuest = 1;
+  var menu = [167511, 164277, 444701];
 
   this.getMenu = function(){
     return menu;
@@ -39,12 +39,16 @@ dinnerPlannerApp.factory('Dinner',function ($cookieStore, $resource) {
 
   this.getNumberOfGuests = function() {
     // return numberOfGuest;
-    return $cookieStore.get("numberOfGuest");
+    if($cookieStore.get("numberOfGuest")){
+      return $cookieStore.get("numberOfGuest");
+    }else{
+      return numberOfGuest;
+    }
   }
   //10000 per hour key:
-  var api_key = "sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox";
+  //var api_key = "sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox";
   //500 per hour key:
-  //var api_key = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
+  var api_key = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
   //var api_key = "66J8l00npnHHZcCNLRhxkfW1OHxbojy4";
   //var api_key = "XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN";
   //var api_key = "3stL5NVP4s6ZkmK5gt4dci8a4zOQRpD4";
