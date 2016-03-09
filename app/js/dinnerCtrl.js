@@ -20,32 +20,45 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
   $scope.addDishToMenu = function(id){
     Dinner.addDishToMenu(id);
+    $scope.updateMenu();
   }
   
   $scope.removeDishFromMenu = function(id){
     Dinner.removeDishFromMenu(id);
+    $scope.updateMenu();
   }
 
   $scope.totalMenuPrice = 0;
   $scope.menuTitlePriceList = [];
-  for(var key in menu){
-    (function(key){
-      Dinner.Dish.get({id: menu[key]}, function(data){
-        var title = data.Title;
-        var ingredients = data.Ingredients;
-        var dishPrice = 0;
 
-        for(var ing_key in ingredients){
-          dishPrice += ingredients[ing_key].Quantity;
-        }
-        $scope.test = 1;
+  $scope.updateMenu = function(){
+    $scope.menuTitlePriceList = [];
+    $scope.totalMenuPrice = 0;
+    for(var key in menu){
+      (function(key){
+          Dinner.Dish.get({id: menu[key]}, function(data){
+            var title = data.Title;
+            var ingredients = data.Ingredients;
+            var dishPrice = 0;
 
-        $scope.menuTitlePriceList[key] = ({"title":title, "dishPrice":fixNumber(dishPrice)})
-        //alert($scope.menuTitlePriceList[key]);
-        $scope.totalMenuPrice = fixNumber($scope.totalMenuPrice + dishPrice);
-      })
-    })(key);
-  }
+            for(var ing_key in ingredients){
+              dishPrice += ingredients[ing_key].Quantity;
+            }
+            $scope.test = 1;
+
+            // $scope.menuTitlePriceList[key] = ({"title":title, "dishPrice":fixNumber(dishPrice)})
+            $scope.menuTitlePriceList.push({"id":menu[key], "title":title, "dishPrice":fixNumber(dishPrice)});
+            // console.log($scope.menuTitlePriceList);
+            //alert($scope.menuTitlePriceList[key]);
+            $scope.totalMenuPrice = fixNumber($scope.totalMenuPrice + dishPrice);
+          })
+        })(key);
+      }
+      var test = 0;
+    }
+
+  $scope.updateMenu();
+  
 
   $scope.pending = 0;
 
