@@ -1,0 +1,35 @@
+<!-- The content here would be displayed after button "confirm dinner" clicked -->
+<div class="container">
+	<ng-include src="'partials/title.html'" ng-controller="TitleCtrl"></ng-include>
+</div>
+
+<div class="container">
+	<div class="col-xs-10">
+		<div class="panel panel-info">
+			<!-- <ng-include src="'partials/dinner-backbar.html'" ng-controller="DinnerOverviewCtrl"></ng-include> -->
+			<div class="panel-heading">
+				<div class="panel-title">
+					<h4>My dinner:</h4>
+					<p>Number of guests: <span ng-bind="getNumberOfGuests()"></span></p>
+				</div>
+			</div>
+			<div ng-class="panel-body">
+				<div ng-repeat="dish in menuList" class="col-xs-4" style="height: 400px; margin-top: 20px; text-align: justify">
+					<img class="img-rounded" height="140" width="140" ng-src="{{dish.recipe.ImageURL}}">
+					<h3>{{dish.recipe.Title}}</h3>
+					<p style="text-align: justify">{{dish.recipe.Description}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-2">
+		<a ng-href="#/search" class="btn btn-primary">Go back and edit dinner</a>
+		<div style="margin-top: 20px;">
+			<a ng-href="#/print" class="btn btn-primary">Print Full Recipe</a>
+			<h4>Total price</h4>
+			<p>{{totalMenuPrice * getNumberOfGuests()}}</p>
+		</div>
+	</div>
+	<!-- <ng-include src="'partials/dinner-backbar.html'" ng-controller="DinnerOverviewCtrl"></ng-include> -->
+</div>
+

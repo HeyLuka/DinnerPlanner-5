@@ -51,6 +51,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope, $location, Dinner) {
 
             // $scope.menuTitlePriceList[key] = ({"title":title, "dishPrice":fixNumber(dishPrice)})
             $scope.menuTitlePriceList.push({"id":menu[key], "title":title, "dishPrice":fixNumber(dishPrice)});
+            // $scope.menuTitlePriceList.push({"recipe": data, "dishPrice":fixNumber(dishPrice)});
             // console.log($scope.menuTitlePriceList);
             //alert($scope.menuTitlePriceList[key]);
             $scope.totalMenuPrice = fixNumber($scope.totalMenuPrice + dishPrice);
