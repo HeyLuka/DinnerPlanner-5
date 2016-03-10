@@ -16,10 +16,10 @@ dinnerPlannerApp.factory('Dinner',function ($cookieStore, $resource) {
     {
       return menu;
     }
-    
   }
 
   this.addDishToMenu = function(id){
+    menu = this.getMenu();
     for(var key in menu){
       if(menu[key] == id){
         return;
@@ -58,8 +58,8 @@ dinnerPlannerApp.factory('Dinner',function ($cookieStore, $resource) {
 
   //var api_key = "sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox";
   //500 per hour key:
-  var api_key = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
-  //var api_key = "66J8l00npnHHZcCNLRhxkfW1OHxbojy4";
+  // var api_key = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
+  var api_key = "66J8l00npnHHZcCNLRhxkfW1OHxbojy4";
   //var api_key = "XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN";
   //var api_key = "3stL5NVP4s6ZkmK5gt4dci8a4zOQRpD4";
   // var api_key = "8vtk7KykflO5IzB96kb0mpot0sU40096";
